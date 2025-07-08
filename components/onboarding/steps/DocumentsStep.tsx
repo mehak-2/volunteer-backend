@@ -186,13 +186,13 @@ export default function DocumentsStep() {
 
       // Show success message
       toast({
-        title: "Success!",
-        description: "Your volunteer profile has been created.",
+        title: "Application Submitted!",
+        description: "Your volunteer application has been submitted and is pending admin approval.",
         variant: "default",
       });
 
-      // Redirect to volunteer dashboard
-      router.push("/volunteerdashboard");
+      // Redirect to approval pending page
+      router.push("/volunteer/approval-pending");
     } catch (error: any) {
       console.error("Error completing onboarding:", error);
       toast({

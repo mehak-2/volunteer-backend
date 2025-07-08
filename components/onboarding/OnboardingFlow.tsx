@@ -65,7 +65,7 @@ export default function OnboardingFlow() {
           }),
         });
 
-        router.push("/volunteerdashboard");
+        router.push("/volunteer/approval-pending");
       }
     } catch (error) {
       console.error("Error completing onboarding:", error);

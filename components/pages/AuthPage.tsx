@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -57,7 +58,6 @@ export default function AuthPage() {
       }).unwrap();
 
       if (response.success) {
-        // Store token and auth state
         localStorage.setItem("token", response.data.token);
         dispatch(
           loginSuccess({
@@ -66,26 +66,38 @@ export default function AuthPage() {
               email: response.data.user.email,
               role: "volunteer",
               name: response.data.user.name,
+              status: response.data.user.status,
+              onboardingComplete: response.data.user.onboardingComplete,
             },
             token: response.data.token,
           })
         );
 
-        console.log("Login response user data:", response.data.user); // Debug log
+        const redirectPath = response.data.redirect;
 
-        // Check if user has completed onboarding
-        if (response.data.user.onboardingComplete) {
-          console.log("Onboarding complete, redirecting to dashboard");
-          router.push("/volunteerdashboard");
+        if (redirectPath === "/volunteer/approval-pending") {
+          toast({
+            title: "Application Pending",
+            description:
+              "Your application is pending admin approval. You'll be notified once approved.",
+          });
+          return;
+        } else if (redirectPath === "/volunteer/application-rejected") {
+          toast({
+            variant: "destructive",
+            title: "Application Rejected",
+            description:
+              "Your volunteer application has been rejected. Please contact support for more information.",
+          });
+
+          return;
         } else {
-          console.log("Onboarding not complete, redirecting to onboarding");
-          router.push("/onboarding");
+          router.push(redirectPath);
+          toast({
+            title: "Login successful",
+            description: "Welcome back!",
+          });
         }
-
-        toast({
-          title: "Login successful",
-          description: "Welcome back!",
-        });
       }
     } catch (error: any) {
       console.error("Login error:", error);

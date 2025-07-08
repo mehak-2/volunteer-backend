@@ -48,13 +48,19 @@ export default function VolunteerDashboard() {
   const [emergencyAvailable, setEmergencyAvailable] = useState(true);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [updateProfile] = useUpdateProfileMutation();
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState<string | null>(null);
 
-  // Add this console.log to debug
   console.log("Current user:", user);
 
   useEffect(() => {
-    if (!token || !user) {
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("token");
+      setToken(storedToken);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (token !== null && (!token || !user)) {
       router.push("/auth");
       return;
     }
