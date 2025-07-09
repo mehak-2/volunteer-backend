@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -85,6 +85,6 @@ const config: Config = {
       },
     },
   },
-  // Remove plugins array - animations are built-in in v4
+  plugins: [require("tailwindcss-animate")],
 };
 export default config;

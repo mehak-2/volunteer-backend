@@ -81,12 +81,10 @@ export interface DashboardStats {
   selectedVolunteers: number;
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
 export const organizationApi = createApi({
   reducerPath: "organizationApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${baseUrl}/api/organization`,
+    baseUrl: "http://localhost:5000/api/organization",
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("organizationToken");
       if (token) {

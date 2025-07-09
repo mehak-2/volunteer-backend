@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -74,22 +73,19 @@ export default function AuthPage() {
         );
 
         const redirectPath = response.data.redirect;
-
-        if (redirectPath === "/volunteer/approval-pending") {
+        
+        if (redirectPath === '/volunteer/approval-pending') {
           toast({
             title: "Application Pending",
-            description:
-              "Your application is pending admin approval. You'll be notified once approved.",
+            description: "Your application is pending admin approval. You'll be notified once approved.",
           });
           return;
-        } else if (redirectPath === "/volunteer/application-rejected") {
+        } else if (redirectPath === '/volunteer/application-rejected') {
           toast({
             variant: "destructive",
             title: "Application Rejected",
-            description:
-              "Your volunteer application has been rejected. Please contact support for more information.",
+            description: "Your volunteer application has been rejected. Please contact support for more information.",
           });
-
           return;
         } else {
           router.push(redirectPath);

@@ -5,13 +5,11 @@ import { cn } from "@/lib/utils";
 
 interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: number;
-  max?: number;
-  className?: string;
 }
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
-  ({ className, value = 0, max = 100, ...props }, ref) => {
-    const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
+  ({ className, value = 0, ...props }, ref) => {
+    const percentage = Math.min(Math.max(value, 0), 100);
 
     return (
       <div
@@ -22,13 +20,13 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
         )}
         role="progressbar"
         aria-valuemin={0}
-        aria-valuemax={max}
-        aria-valuenow={value}
+        aria-valuemax={100}
+        aria-valuenow={percentage}
         {...props}
       >
         <div
-          className="h-full w-full flex-1 bg-primary transition-all duration-200"
-          style={{ transform: `translateX(-${100 - percentage}%)` }}
+          className="h-full bg-primary transition-all duration-200 ease-in-out"
+          style={{ width: `${percentage}%` }}
         />
       </div>
     );

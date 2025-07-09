@@ -23,10 +23,10 @@ import {
   LogOut,
   CheckCircle,
   User,
+  Phone,
   Mail,
   Calendar,
   Activity,
-  Phone,
 } from "lucide-react";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { logout } from "@/store/slices/authSlice";
@@ -467,7 +467,7 @@ export default function VolunteerDashboard() {
                           </div>
                           <div className="flex items-center gap-1">
                             <Clock className="h-3 w-3" />
-                            {new Date(alert.createdAt).toLocaleString()}
+                            {alert.createdAt.toLocaleString()}
                           </div>
                         </div>
                       </div>

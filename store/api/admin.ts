@@ -48,12 +48,10 @@ export interface Organization {
   createdAt: string;
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
 export const adminApi = createApi({
   reducerPath: "adminApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${baseUrl}/api/admin`,
+    baseUrl: "http://localhost:5000/api/admin",
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("token");
       if (token) {

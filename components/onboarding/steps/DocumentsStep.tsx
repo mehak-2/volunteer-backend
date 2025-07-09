@@ -22,7 +22,7 @@ import {
 import { loginSuccess } from "@/store/slices/authSlice";
 import { useRouter } from "next/navigation";
 import { useDocumentStepMutation } from "@/store/api/onboarding";
-import { useToast } from "@/hooks/use-toast";
+import { toast, useToast } from "@/hooks/use-toast";
 
 export default function DocumentsStep() {
   const { data } = useAppSelector((state) => state.onboarding);
@@ -33,7 +33,6 @@ export default function DocumentsStep() {
   const [agreeToBackground, setAgreeToBackground] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitDocument] = useDocumentStepMutation();
-  const { toast } = useToast(); // Use toast from the hook
 
   const handleDocumentUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -188,8 +187,7 @@ export default function DocumentsStep() {
       // Show success message
       toast({
         title: "Application Submitted!",
-        description:
-          "Your volunteer application has been submitted and is pending admin approval.",
+        description: "Your volunteer application has been submitted and is pending admin approval.",
         variant: "default",
       });
 
