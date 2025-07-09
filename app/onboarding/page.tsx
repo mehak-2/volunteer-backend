@@ -1,7 +1,8 @@
-"use client";
+import OnboardingFlow from '@/components/onboarding/OnboardingFlow';
+import React from 'react'
 
-import OnboardingFlow from "@/components/onboarding/OnboardingFlow";
-
-export default function OnboardingPage() {
+const page = () => {
   return <OnboardingFlow />;
-}
+};
+
+export default page;

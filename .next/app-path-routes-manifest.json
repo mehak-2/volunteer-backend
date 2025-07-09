@@ -1,0 +1,12 @@
+{
+  "/_not-found": "/_not-found",
+  "/page": "/",
+  "/admindashboard/page": "/admindashboard",
+  "/auth/page": "/auth",
+  "/onboarding/page": "/onboarding",
+  "/organizationdashboard/page": "/organizationdashboard",
+  "/volunteerdashboard/page": "/volunteerdashboard",
+  "/program/[id]/page": "/program/[id]",
+  "/volunteer/approval-pending/page": "/volunteer/approval-pending",
+  "/volunteer/application-rejected/page": "/volunteer/application-rejected"
+}
