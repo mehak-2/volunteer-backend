@@ -1,7 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+
 const baseQueryWithAuth = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api",
+  baseUrl: `${baseUrl}/api`,
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("token");
     if (token) {
