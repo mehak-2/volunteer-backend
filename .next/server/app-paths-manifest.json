@@ -1,12 +1,4 @@
 {
-  "/_not-found": "app/_not-found.js",
   "/page": "app/page.js",
-  "/admindashboard/page": "app/admindashboard/page.js",
-  "/auth/page": "app/auth/page.js",
-  "/onboarding/page": "app/onboarding/page.js",
-  "/organizationdashboard/page": "app/organizationdashboard/page.js",
-  "/volunteerdashboard/page": "app/volunteerdashboard/page.js",
-  "/program/[id]/page": "app/program/[id]/page.js",
-  "/volunteer/approval-pending/page": "app/volunteer/approval-pending/page.js",
-  "/volunteer/application-rejected/page": "app/volunteer/application-rejected/page.js"
+  "/auth/page": "app/auth/page.js"
 }

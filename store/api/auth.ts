@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { loginSuccess } from "@/store/slices/authSlice";
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
 interface LoginResponse {
   success: boolean;
@@ -18,7 +18,7 @@ interface LoginResponse {
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${baseUrl}/api`,
+    baseUrl: `${baseUrl}`,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("token");
       if (token) {
@@ -53,7 +53,7 @@ export const authApi = createApi({
     }),
     register: builder.mutation({
       query: (credentials) => ({
-        url: "/auth/register",
+        url: "/api/auth/register",
         method: "POST",
         body: credentials,
       }),
