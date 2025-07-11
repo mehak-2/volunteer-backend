@@ -69,7 +69,7 @@ export default function DocumentsStep() {
           const formData = new FormData();
           formData.append("file", file);
           const uploadResponse = await fetch(
-            "http://localhost:5000/api/upload",
+            `${process.env.NEXT_PUBLIC_API_URL}/api/upload`,
             {
               method: "POST",
               body: formData,
@@ -85,7 +85,7 @@ export default function DocumentsStep() {
 
       // Submit complete application
       const onboardingResponse = await fetch(
-        "http://localhost:5000/api/onboarding/submit",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/onboarding/submit`,
         {
           method: "POST",
           headers: {

@@ -82,9 +82,9 @@ export interface DashboardStats {
 }
 
 export const organizationApi = createApi({
-  reducerPath: "organizationApi",
+  reducerPath: "organizationApi", 
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/organization",
+    baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/organization`,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("organizationToken");
       if (token) {

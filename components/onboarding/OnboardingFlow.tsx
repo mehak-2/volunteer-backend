@@ -54,7 +54,7 @@ export default function OnboardingFlow() {
         );
 
         // Create volunteer profile
-        await fetch(`http://localhost:5000/api/volunteer/profile`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/volunteer/profile`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
